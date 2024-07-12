@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
+    "start":"node js/conexion.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
