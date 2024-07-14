@@ -8,43 +8,44 @@ route.get('/:id',uno)
 route.put('/', eliminar)
 route.post('/', agregar)
 
-async function todos (req,res){
-    try{
+async function todos(req, res, next) {
+    try {
         const items = await controlador.todos()
-        respuestas.success(req,res,items,200)
-    }catch(err){
+        respuestas.success(req, res, items, 200)
+    } catch (err) {
         next(err)
     }
-    
 }
-async function uno (req,res){
-    try{
+
+async function uno(req, res, next) {
+    try {
         const items = await controlador.uno(req.params.id)
-        respuestas.success(req,res,items,200)
-    }catch(err){
+        respuestas.success(req, res, items, 200)
+    } catch (err) {
         next(err)
     }
 }
-async function eliminar (req,res){
-    try{
+
+async function eliminar(req, res, next) {
+    try {
         const items = await controlador.eliminar(req.body)
-        respuestas.success(req,res,'eliminado con exito',200)
-    }catch(err){
+        respuestas.success(req, res, 'eliminado con exito', 200)
+    } catch (err) {
         next(err)
     }
 }
-async function agregar (req,res,next){
-    try{
+
+async function agregar(req, res, next) {
+    try {
         const items = await controlador.agregar(req.body)
-        if(req.body.actualizado===0){
-            mensaje= 'guardado con exito'
-        }else{
-            mensaje= 'actualizado con exito'
-        }
-        respuestas.success(req,res,mensaje,201)
-    }catch(err){
+        const mensaje = req.body.actualizado === 0 ? 'guardado con exito' : 'actualizado con exito'
+        respuestas.success(req, res, mensaje, 201)
+    } catch (err) {
         next(err)
     }
 }
+
+module.exports = route
+
 
 module.exports = route

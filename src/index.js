@@ -1,5 +1,5 @@
-const app = require('./app')
+const { app, server } = require('./app')
 
-app.listen(app.get('port'),()=>{
-    console.log('escuchando en el puerto:  ', app.get('port'))
+server.listen(app.get('port'), () => {
+    console.log('escuchando en el puerto: ', app.get('port'))
 })

@@ -1,12 +1,13 @@
-const express = require('express')
-const morgan = require('morgan')
-const config = require('./config.js')
-const participantes = require('./moduls/data/participantes.js')
-const error = require('./red/errors.js')
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors'); // Importa el paquete cors
+const config = require('./config.js');
+const error = require('./red/errors.js');
 const http = require('http');
 const socketIo = require('socket.io');
+const participantes = require('./moduls/data/participantes.js');
 
-const app = express()
+const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
@@ -14,16 +15,18 @@ const io = socketIo(server, {
         methods: ["GET", "POST"]
     }
 });
-//middleware
-app.use(morgan('dev')) 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-//configuracion
 
-app.set('port', config.app.port)
+// Middleware
+app.use(morgan('dev'));
+app.use(cors()); // Usa cors para permitir solicitudes desde cualquier origen
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//rutas
-app.use('/api/participantes', participantes)
-app.use(error)
+// Configuración
+app.set('port', config.app.port);
 
-module.exports = app
+// Rutas
+app.use('/api/participantes', participantes);
+app.use(error);
+
+module.exports = { app, server, io };

@@ -1,7 +1,7 @@
 {
-  "name": "loto",
+  "name": "DataBaseloto",
   "version": "1.0.0",
-  "description": "prueba para back end del loto",
+  "description": "Base de datos del mega loto",
   "main": "./src/index.js",
   "scripts": {
     "dev": "nodemon /src/index.js"
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
