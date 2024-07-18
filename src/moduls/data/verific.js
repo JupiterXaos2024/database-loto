@@ -8,6 +8,7 @@ route.put('/',verific)
 async function verific(req,res,next){
     try {
         const cc = req.body.a
+        console.log(cc)
         const veri = await controlador.verificar(cc)
         if(veri[0].CC === cc){
             respuestas.success(req,res,'la cc existe en la DB',201)
