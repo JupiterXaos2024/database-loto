@@ -14,9 +14,17 @@ function eliminar(body){
 function agregar(body){
     return db.agregar(tabla,body)
 }
+function login(cc,password){
+    return db.login(tabla,cc,password)
+}
+function verificar(cc){
+    return db.Verificar(tabla,cc)
+}
 module.exports = {
     todos,
     uno,
     eliminar,
-    agregar
+    agregar,
+    login,
+    verificar
 }

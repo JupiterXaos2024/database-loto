@@ -46,6 +46,3 @@ async function agregar(req, res, next) {
 }
 
 module.exports = route
-
-
-module.exports = route
