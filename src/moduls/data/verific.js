@@ -7,7 +7,7 @@ route.put('/',verific)
 
 async function verific(req,res,next){
     try {
-        const cc = req.body.a
+        const cc = req.body
         console.log(cc)
         const veri = await controlador.verificar(cc)
         if(veri[0].CC === cc){
