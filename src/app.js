@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "192.168.0.41", // Cambia esto al dominio permitido
+    origin: "*", // Cambia esto al dominio permitido
     methods: ["GET", "POST"]
   }
 });
